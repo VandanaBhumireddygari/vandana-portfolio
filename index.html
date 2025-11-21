@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vandana Bhumireddygari - Data Engineer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,260 +14,338 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #fafafa;
-            color: #333;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #fff;
             line-height: 1.6;
         }
 
-        header {
-            padding: 40px 20px;
-            max-width: 1000px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
+            padding: 0 20px;
         }
 
-        .hero-section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        /* Hero Section */
+        header {
+            padding: 80px 20px 60px;
             text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .intro-text {
-            font-size: 1.2rem;
-            color: #555;
+        .tagline {
+            font-size: 1.3rem;
+            color: #a0aec0;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.8;
         }
 
-        .contact-info {
-            font-size: 0.95rem;
-            color: #666;
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
             margin-bottom: 30px;
         }
 
-        .contact-info a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .skills {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .skill-tag {
-            background: white;
+        .contact-links a {
             padding: 10px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid #667eea;
             border-radius: 25px;
-            font-size: 0.95rem;
-            border: 1px solid #e0e0e0;
+            color: #667eea;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .skill-tag:hover {
-            background: #f0f0f0;
-            border-color: #999;
-        }
-
-        .section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid #333;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .experience-item.merilytics {
-            border-left-color: #667eea;
-        }
-
-        .experience-item.utd {
-            border-left-color: #f5576c;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 10px;
-        }
-
-        .exp-title {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .exp-company {
-            color: #888;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .exp-dates {
-            color: #888;
-            font-size: 0.9rem;
-            text-align: right;
-        }
-
-        .exp-description {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        .exp-description ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .exp-description li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .exp-description li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-        }
-
-        /* Projects Section */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .portfolio-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-
-        .card-header {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .contact-links a:hover {
+            background: #667eea;
             color: white;
-            font-size: 3rem;
         }
 
-        .card-header.project-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .card-header.project-3 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .card-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .card-content p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .card-tech {
+        .skills-showcase {
             display: flex;
+            gap: 10px;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
+            margin-top: 30px;
         }
 
-        .tech-badge {
-            background: #f0f0f0;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            margin-top: 40px;
-        }
-
-        .skill-category {
-            margin-bottom: 30px;
-        }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-item {
-            background: #f5f5f5;
+        .skill-chip {
+            background: rgba(102, 126, 234, 0.15);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: #555;
+            color: #a0aec0;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            background: rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-card p {
+            color: #a0aec0;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #667eea;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+        }
+
+        /* Interactive Model Section */
+        .model-demo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-top: 40px;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0aec0;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .result-box {
+            background: rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .result-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #67e8f9;
+        }
+
+        /* Get in Touch Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(245, 87, 108, 0.1) 100%);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            color: #a0aec0;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #a0aec0;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #f5576c 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            color: #718096;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         /* Modal Styles */
@@ -277,32 +356,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
             overflow-y: auto;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal.active {
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .modal-content {
-            background: white;
-            border-radius: 16px;
-            max-width: 900px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
+            background: #1a1a2e;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            padding: 50px 40px;
             position: relative;
+            animation: slideUp 0.4s ease;
         }
 
         @keyframes slideUp {
@@ -310,449 +384,597 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .modal-header {
-            position: relative;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .modal-header.project-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .modal-header.project-3 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        .close-btn {
+        .modal-close {
             position: absolute;
             top: 20px;
             right: 20px;
             width: 40px;
             height: 40px;
-            background: white;
+            background: rgba(102, 126, 234, 0.2);
             border: none;
             border-radius: 50%;
+            color: white;
             font-size: 24px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(102, 126, 234, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .close-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .modal-body {
-            padding: 50px 40px;
-        }
-
-        .modal-body h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .modal-body .subtitle {
-            color: #888;
-            font-size: 1.1rem;
+            gap: 20px;
             margin-bottom: 30px;
         }
 
-        .project-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
+        .modal-icon {
+            font-size: 3rem;
         }
 
-        .detail-section h3 {
+        .modal-title {
+            flex: 1;
+        }
+
+        .modal-title h2 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-title p {
+            color: #a0aec0;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section h3 {
+            color: #667eea;
             font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 12px;
         }
 
-        .detail-section p {
-            color: #555;
+        .modal-section p {
+            color: #cbd5e0;
+            line-height: 1.7;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            color: #cbd5e0;
             line-height: 1.8;
-            margin-bottom: 15px;
         }
 
-        .tags {
+        .modal-section ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .modal-section ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .modal-tags {
             display: flex;
-            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        .tag {
-            background: #f0f0f0;
-            padding: 8px 15px;
+        .modal-tag {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: #555;
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
         }
 
-        .cta-button {
+        .modal-github {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .modal-github a {
             display: inline-block;
-            background: #333;
+            background: linear-gradient(135deg, #667eea 0%, #f5576c 100%);
             color: white;
             padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 8px;
             text-decoration: none;
-            margin: 20px 10px;
-            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid #333;
-            cursor: pointer;
         }
 
-        .cta-button:hover {
-            background: white;
-            color: #333;
-        }
-
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            color: #888;
-            border-top: 1px solid #e0e0e0;
-            margin-top: 60px;
+        .modal-github a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            .intro-text {
-                font-size: 1rem;
+            .section-title {
+                font-size: 1.8rem;
             }
-            .project-details {
+            .model-grid {
                 grid-template-columns: 1fr;
             }
-            .modal-body {
-                padding: 30px 20px;
-            }
-            .exp-header {
-                flex-direction: column;
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>Vandana Bhumireddygari 👋</h1>
-        <div class="contact-info">
-            <a href="mailto:vandanabhumireddygari@gmail.com">📧 Email</a>
-            <a href="tel:+12147949899">📱 (214) 794-9899</a>
-            <a href="#">🔗 LinkedIn</a>
-            <a href="#">💻 Github</a>
+        <div class="container">
+            <h1>Vandana Bhumireddygari 🚀</h1>
+            <p class="tagline">Data Engineer | Building scalable data pipelines & warehouses | AWS • Snowflake • DBT</p>
+            
+            <div class="contact-links">
+                <a href="mailto:vandanabhumireddygari@gmail.com">📧 Email</a>
+                <a href="tel:+12147949899">📱 (214) 794-9899</a>
+                <a href="https://linkedin.com/in/vandanabhumireddygari" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/VandanaBhumireddygari" target="_blank">💻 GitHub</a>
+            </div>
+
+            <div class="skills-showcase">
+                <span class="skill-chip">AWS</span>
+                <span class="skill-chip">Snowflake</span>
+                <span class="skill-chip">DBT</span>
+                <span class="skill-chip">Spark</span>
+                <span class="skill-chip">Airflow</span>
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">SQL</span>
+            </div>
         </div>
     </header>
 
-    <div class="hero-section">
-        <p class="intro-text">
-            <strong>Data Engineer</strong> with 4+ years of experience building scalable data pipelines and warehouses. 
-            Specialized in AWS cloud infrastructure, Snowflake data modeling, and ETL automation. Currently at CHS Inc designing enterprise data solutions.
-        </p>
-
-        <div class="skills">
-            <div class="skill-tag">☁️ AWS & Azure</div>
-            <div class="skill-tag">🗄️ Snowflake & Redshift</div>
-            <div class="skill-tag">🔧 Data Pipeline Automation</div>
-            <div class="skill-tag">📊 DBT & Spark</div>
-        </div>
-
-        <div>
-            <a href="#projects" class="cta-button">View My Projects</a>
-            <a href="#experience" class="cta-button" style="background: white; color: #333; border-color: #333;">My Experience</a>
-        </div>
-    </div>
-
-    <!-- Experience Section -->
-    <div class="section" id="experience">
-        <h2 class="section-title">Experience</h2>
-        
-        <div class="experience-item">
-            <div class="exp-header">
-                <div>
-                    <div class="exp-title">Data Engineer</div>
-                    <div class="exp-company">CHS Inc, Minnesota, USA</div>
+    <!-- Featured Projects -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Featured Projects 🔥</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openProject(1)">
+                    <div class="project-icon">🎬</div>
+                    <h3>YouTube Data Engineering</h3>
+                    <p>End-to-end data pipeline processing YouTube metrics and trends using AWS cloud infrastructure.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Glue</span>
+                        <span class="tag">Redshift</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
                 </div>
-                <div class="exp-dates">May 2024 - Present</div>
-            </div>
-            <div class="exp-description">
-                <ul>
-                    <li>Designed and built an end-to-end data pipeline integrating AWS (S3, Glue, Lambda) with Snowflake and DBT, reducing manual intervention by 35%</li>
-                    <li>Ingested raw data from multiple ERP systems and APIs into S3, applied preprocessing with AWS Glue, and securely loaded curated layers into Snowflake</li>
-                    <li>Developed DBT models (staging, intermediate, marts) with testing and documentation, ensuring data lineage and quality</li>
-                    <li>Enabled self-service analytics by connecting curated Snowflake tables to Tableau and Power BI dashboards</li>
-                    <li>Optimized pipelines and queries, reducing processing time from 18 hours to 4 hours</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="experience-item merilytics">
-            <div class="exp-header">
-                <div>
-                    <div class="exp-title">Senior Data Engineer</div>
-                    <div class="exp-company">Merilytics, India</div>
+                <div class="project-card" onclick="openProject(2)">
+                    <div class="project-icon">🛒</div>
+                    <h3>Scalable Data Pipeline</h3>
+                    <p>Production-grade pipeline with Snowflake, Airflow, DBT & Snowpark for real-time analytics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">DBT</span>
+                        <span class="tag">Airflow</span>
+                        <span class="tag">Snowpark</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
                 </div>
-                <div class="exp-dates">August 2020 - August 2023</div>
-            </div>
-            <div class="exp-description">
-                <ul>
-                    <li>Migrated 1+ TB of business-critical data from multiple sources (S3, Oracle, SQL Server) to Redshift via AWS Glue, achieving 57% annual cost savings</li>
-                    <li>Automated ETL process with AWS Glue pipelines, reducing manual intervention by 40% and improving query performance by 20%</li>
-                    <li>Engineered AWS Lambda workflow with Python using REST APIs, reducing manual effort by 60% and resulting in 10% cost savings</li>
-                    <li>Led experimentation and A/B testing initiatives to validate LLM-driven pricing strategies, achieving 20% uplift in sales</li>
-                    <li>Automated 5 weekly BI reports by merging 10 Tableau sheets into an AWS Glue-based pipeline, reducing manual effort by 80%</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="experience-item utd">
-            <div class="exp-header">
-                <div>
-                    <div class="exp-title">Master of Science, Data Science and AI</div>
-                    <div class="exp-company">The University of Texas at Dallas</div>
+                <div class="project-card" onclick="openProject(3)">
+                    <div class="project-icon">📊</div>
+                    <h3>Open Table Formats</h3>
+                    <p>Delta Lake implementation with Databricks for modern data lakehouse architecture.</p>
+                    <div class="project-tags">
+                        <span class="tag">Databricks</span>
+                        <span class="tag">Delta Lake</span>
+                        <span class="tag">PySpark</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
                 </div>
-                <div class="exp-dates">May 2025</div>
-            </div>
-            <div class="exp-description">
-                <p><strong>GPA:</strong> 3.86 | <strong>Award:</strong> Dean's Excellence Student Scholarship</p>
-                <p><strong>Relevant Coursework:</strong> AWS Solution Architect, Big Data, Machine Learning, NLP – LLM, Advanced Statistics, Business Analytics with R</p>
+
+                <div class="project-card" onclick="openProject(4)">
+                    <div class="project-icon">🧠</div>
+                    <h3>NLP - Emotion Detection</h3>
+                    <p>Machine learning model detecting emotions from text using advanced NLP techniques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">ML</span>
+                        <span class="tag">Jupyter</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
+                </div>
+
+                <div class="project-card" onclick="openProject(5)">
+                    <div class="project-icon">📈</div>
+                    <h3>Marketing Mix Modeling</h3>
+                    <p>Statistical analysis of advertising impact using predictive modeling and analytics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Analytics</span>
+                        <span class="tag">Modeling</span>
+                        <span class="tag">R</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
+                </div>
+
+                <div class="project-card" onclick="openProject(6)">
+                    <div class="project-icon">⚡</div>
+                    <h3>Streamlit Apps</h3>
+                    <p>Interactive data applications and dashboards for real-time analytics and visualization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Analytics</span>
+                        <span class="tag">UI</span>
+                    </div>
+                    <span class="project-link">View Details →</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Projects Section -->
-    <div class="section" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-card" onclick="openProject(1)">
-                <div class="card-header">🎬</div>
-                <div class="card-content">
-                    <h3>YouTube Customer Insights with AWS</h3>
-                    <p>Built end-to-end data pipeline processing YouTube data on AWS cloud infrastructure.</p>
-                    <div class="card-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">S3</span>
-                        <span class="tech-badge">Lambda</span>
-                        <span class="tech-badge">Glue</span>
+    <!-- Interactive Model Demo -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Interactive Data Model 📊</h2>
+            <div class="model-demo">
+                <p style="color: #a0aec0; margin-bottom: 20px;">
+                    Adjust the inputs below to see how data transformations impact your pipeline performance in real-time.
+                </p>
+                
+                <div class="model-grid">
+                    <!-- Inputs -->
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 20px;">Pipeline Configuration</h4>
+                        
+                        <div class="input-group">
+                            <label>📊 Daily Records (in millions)</label>
+                            <input type="number" id="recordsInput" value="50" min="1" max="1000" step="10">
+                        </div>
+
+                        <div class="input-group">
+                            <label>⚡ Processing Power (%)</label>
+                            <input type="range" id="powerInput" value="70" min="10" max="100" step="5" style="height: 6px; cursor: pointer;">
+                            <span style="color: #667eea; font-weight: 600;" id="powerValue">70%</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label>💾 Storage Optimization (%)</label>
+                            <input type="range" id="storageInput" value="60" min="10" max="100" step="5" style="height: 6px; cursor: pointer;">
+                            <span style="color: #667eea; font-weight: 600;" id="storageValue">60%</span>
+                        </div>
+
+                        <div class="result-box">
+                            <h4>Processing Time</h4>
+                            <div class="result-value" id="processingTime">4.2 hrs</div>
+                        </div>
+
+                        <div class="result-box">
+                            <h4>Storage Cost Saved</h4>
+                            <div class="result-value" id="costSaved">$1,200/mo</div>
+                        </div>
+
+                        <div class="result-box">
+                            <h4>Pipeline Efficiency</h4>
+                            <div class="result-value" id="efficiency">94%</div>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 20px;">Performance Metrics</h4>
+                        <div class="chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="portfolio-card" onclick="openProject(2)">
-                <div class="card-header project-2">🛒</div>
-                <div class="card-content">
-                    <h3>Purchase Insights with DBT</h3>
-                    <p>Developed data transformation layer using DBT with Snowflake for analytics and reporting.</p>
-                    <div class="card-tech">
-                        <span class="tech-badge">Snowflake</span>
-                        <span class="tech-badge">DBT</span>
-                        <span class="tech-badge">Airflow</span>
-                        <span class="tech-badge">Docker</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Get in Touch -->
+    <section>
+        <div class="container">
+            <div class="contact-section">
+                <h3>Let's Create Something Amazing 🚀</h3>
+                <p>
+                    I'm always excited to collaborate on meaningful data projects. Whether it's building a data pipeline, 
+                    designing analytics solutions, or just discussing best practices—let's connect!
+                </p>
 
-            <div class="portfolio-card" onclick="openProject(3)">
-                <div class="card-header project-3">📊</div>
-                <div class="card-content">
-                    <h3>Open Table Format with Databricks</h3>
-                    <p>Implemented Delta Lake architecture for efficient data management and analytics.</p>
-                    <div class="card-tech">
-                        <span class="tech-badge">Databricks</span>
-                        <span class="tech-badge">Delta Lake</span>
-                        <span class="tech-badge">PySpark</span>
-                        <span class="tech-badge">SQL</span>
-                    </div>
+                <div class="form-container">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message 📬</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Skills Section -->
-    <div class="section">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-section">
-            <div class="skill-category">
-                <h3>Cloud Platforms</h3>
-                <div class="skill-list">
-                    <span class="skill-item">AWS (S3, Redshift, Lambda, Glue, Athena, EC2, VPC, IAM)</span>
-                    <span class="skill-item">Azure (Data Factory, ADLS Gen 2)</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Data Engineering Tools</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Snowflake</span>
-                    <span class="skill-item">Databricks</span>
-                    <span class="skill-item">DBT</span>
-                    <span class="skill-item">Apache Spark</span>
-                    <span class="skill-item">Airflow</span>
-                    <span class="skill-item">Docker</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Programming & Databases</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Python (Pandas, NumPy, Scikit-learn)</span>
-                    <span class="skill-item">SQL</span>
-                    <span class="skill-item">R</span>
-                    <span class="skill-item">Git & GitHub</span>
-                    <span class="skill-item">Linux Scripting</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Analytics & Visualization</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Tableau</span>
-                    <span class="skill-item">Power BI</span>
-                    <span class="skill-item">A/B Testing</span>
-                    <span class="skill-item">Predictive Modeling</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Certifications</h3>
-                <div class="skill-list">
-                    <span class="skill-item">AWS Cloud Fundamentals</span>
-                    <span class="skill-item">AWS Solution Architect</span>
-                    <span class="skill-item">Microsoft Azure (DP-900)</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Vandana Bhumireddygari. All rights reserved. Built with care.</p>
+        <p>&copy; 2025 Vandana Bhumireddygari. All rights reserved. Built with passion for data. 💾</p>
     </footer>
 
-    <!-- Project Detail Modal -->
-    <div class="modal" id="projectModal" onclick="closeProject(event)">
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal" onclick="closeProjectModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-header" id="modalHeader">
-                <button class="close-btn" onclick="closeProject()">✕</button>
-            </div>
-            <div class="modal-body">
-                <h2 id="projectTitle"></h2>
-                <p class="subtitle" id="projectSubtitle"></p>
-                
-                <div class="project-details">
-                    <div class="detail-section">
-                        <h3>Overview</h3>
-                        <p id="projectOverview"></p>
-                    </div>
-                    <div class="detail-section">
-                        <h3>Key Accomplishments</h3>
-                        <p id="projectAccomplishments"></p>
-                    </div>
-                </div>
+            <button class="modal-close" onclick="closeProjectModal()">✕</button>
+            
+            <div class="modal-header" id="modalHeader"></div>
 
-                <div class="project-details">
-                    <div class="detail-section">
-                        <h3>Technical Approach</h3>
-                        <p id="projectTechnical"></p>
-                    </div>
-                    <div class="detail-section">
-                        <h3>Impact & Results</h3>
-                        <p id="projectImpact"></p>
-                    </div>
-                </div>
+            <div class="modal-section" id="modalOverview"></div>
+            <div class="modal-section" id="modalChallenge"></div>
+            <div class="modal-section" id="modalSolution"></div>
+            <div class="modal-section" id="modalResults"></div>
+            <div class="modal-section" id="modalTech"></div>
 
-                <div class="detail-section">
-                    <h3>Technologies & Tools</h3>
-                    <div class="tags" id="projectTags"></div>
-                </div>
-            </div>
+            <div class="modal-github" id="modalGitHub"></div>
         </div>
     </div>
 
     <script>
-        const projects = {
+        // Project data
+        const projectsData = {
             1: {
-                title: "YouTube Customer Insights with AWS",
-                subtitle: "Data Pipeline | Cloud Architecture",
-                emoji: "🎬",
-                overview: "Built a comprehensive end-to-end data pipeline that ingests YouTube video data, processes it through AWS services, and stores insights in a data warehouse for analytics and reporting.",
-                accomplishments: "Successfully designed and implemented a scalable pipeline handling millions of records daily. Integrated multiple data sources through AWS Lambda and Glue. Created automated workflows reducing manual data processing by 80%.",
-                technical: "Leveraged AWS S3 for data lake storage, AWS Glue for ETL transformations, Lambda for serverless compute, and Redshift for data warehouse. Used Step Functions to orchestrate complex workflows. Implemented CloudWatch monitoring for real-time pipeline health.",
-                impact: "Enabled real-time analytics dashboards reducing reporting time from 24 hours to 2 hours. Improved data accuracy by 95% through automated validations. Reduced infrastructure costs by 40% through optimal resource utilization.",
-                tags: ["Python", "AWS S3", "AWS Glue", "Lambda", "Step Functions", "Redshift", "CloudWatch", "Quicksight"]
+                icon: '🎬',
+                title: 'YouTube Data Engineering',
+                subtitle: 'Data Pipeline | Cloud Architecture',
+                overview: 'Built a comprehensive end-to-end data pipeline that ingests YouTube video metadata, metrics, and trending data from multiple sources, processes it through AWS cloud services, and stores insights in a scalable data warehouse for real-time analytics.',
+                challenge: 'Challenge: The challenge was to securely manage, streamline, and analyze both structured and semi-structured data from YouTube videos while handling varying data formats (JSON, CSV) and ensuring data quality across different categories and trending metrics.',
+                solution: 'Solution:\n• Leveraged AWS S3 for raw data lake storage with proper partitioning\n• Built AWS Glue ETL pipelines for automated data extraction and transformation\n• Implemented AWS Lambda for serverless data processing\n• Used AWS Redshift for data warehouse and analytics\n• Created CloudWatch monitoring for pipeline health and performance',
+                results: 'Results:\n• Reduced data processing time from 24 hours to 2 hours\n• Improved data accuracy by 95% through automated validations\n• Reduced infrastructure costs by 40% through optimal resource utilization\n• Enabled real-time analytics dashboards for stakeholders',
+                tech: ['Python', 'AWS S3', 'AWS Glue', 'Lambda', 'Redshift', 'CloudWatch', 'SQL'],
+                github: 'https://github.com/VandanaBhumireddygari/Data-Engineering-YouTube-Analysis-Project'
             },
             2: {
-                title: "Purchase Insights with DBT",
-                subtitle: "Data Transformation | Analytics Engineering",
-                emoji: "🛒",
-                overview: "Developed a modern data transformation layer using DBT (Data Build Tool) integrated with Snowflake, creating a scalable analytics data model for purchase and customer behavior analysis.",
-                accomplishments: "Modeled complex fact and dimension tables with proper SCD Type-2 implementation. Created 30+ DBT models with comprehensive testing and documentation. Automated data quality checks reducing data errors by 85%.",
-                technical: "Implemented medallion architecture (bronze/silver/gold layers) with DBT. Used Snowpark for advanced transformations. Orchestrated dbt runs with Airflow and containerized workflows with Docker. Implemented data lineage tracking and automated testing.",
-                impact: "Reduced query execution time by 50% through optimized data models. Enabled self-service analytics for 50+ business users. Improved data governance and compliance through automated documentation.",
-                tags: ["Snowflake", "DBT", "Snowpark", "Apache Airflow", "Docker", "YAML", "SQL", "Data Modeling"]
+                icon: '🛒',
+                title: 'Scalable Data Pipeline',
+                subtitle: 'Data Transformation | Analytics Engineering',
+                overview: 'Developed a production-grade data pipeline using Snowflake, Apache Airflow, DBT, and Snowpark that automates data ingestion, transformation, and modeling at scale. This pipeline efficiently handles booking and transaction data for real-time analytics.',
+                challenge: 'Challenge: The project required building a modern, scalable data infrastructure that could handle complex transformations, maintain data quality, implement proper testing, and enable self-service analytics for business teams.',
+                solution: 'Solution:\n• Implemented medallion architecture (bronze/silver/gold layers) with DBT\n• Created Snowpark for advanced Python-based transformations\n• Orchestrated workflows using Apache Airflow with proper scheduling\n• Built comprehensive data quality tests and documentation\n• Containerized deployment using Docker for consistency',
+                results: 'Results:\n• Reduced query execution time by 50% through optimized data models\n• Enabled self-service analytics for 50+ business users\n• Achieved 99% data quality score with automated testing\n• Cut manual data processing effort by 80%\n• Improved data lineage and governance compliance',
+                tech: ['Snowflake', 'DBT', 'Snowpark', 'Airflow', 'Docker', 'Python', 'SQL'],
+                github: 'https://github.com/VandanaBhumireddygari/Scalable-Data-Pipeline-with-Snowflake-Apache-Airflow-dbt-and-Snowpark'
             },
             3: {
-                title: "Open Table Format with Databricks",
-                subtitle: "Data Lake | Big Data",
-                emoji: "📊",
-                overview: "Implemented Delta Lake (open table format) on Databricks to create a modern, ACID-compliant data lake supporting both batch and real-time analytics with version control and time-travel capabilities.",
-                accomplishments: "Migrated 500+ GB of existing data to Delta Lake format. Created unified analytics namespace using Unity Catalog. Implemented streaming pipelines processing 1M+ events daily with sub-second latency.",
-                technical: "Leveraged Delta Lake for ACID transactions and data reliability. Built pipelines using PySpark and Spark SQL. Implemented incremental processing patterns. Used Unity Catalog for data governance and access control. Created notebooks for data exploration and ML workflows.",
-                impact: "Achieved 99.9% data reliability with ACID guarantees. Reduced time-to-insight from days to minutes. Enabled real-time ML model training on fresh data. Reduced storage costs by 60% through optimized compression.",
-                tags: ["Databricks", "Delta Lake", "PySpark", "SQL", "Unity Catalog", "Python", "Streaming", "Apache Spark"]
+                icon: '📊',
+                title: 'Open Table Formats',
+                subtitle: 'Data Lake | Big Data Architecture',
+                overview: 'Implemented Delta Lake (open table format) on Databricks to create a modern, ACID-compliant data lakehouse supporting both batch and real-time analytics with version control, time-travel, and unified governance capabilities.',
+                challenge: 'Challenge: Needed to migrate existing data infrastructure to support modern data lakehouse patterns, enable streaming analytics, maintain ACID guarantees, and provide unified governance across multiple teams.',
+                solution: 'Solution:\n• Migrated legacy data formats to Delta Lake with ACID transactions\n• Built streaming pipelines using Databricks and Spark\n• Implemented Unity Catalog for data governance and access control\n• Created interactive notebooks for data exploration and ML workflows\n• Optimized storage with compression and partitioning strategies',
+                results: 'Results:\n• Achieved 99.9% data reliability with ACID guarantees\n• Reduced time-to-insight from days to minutes\n• Enabled real-time ML model training on fresh data\n• Reduced storage costs by 60% through optimized compression\n• Eliminated data silos with unified governance layer',
+                tech: ['Databricks', 'Delta Lake', 'PySpark', 'SQL', 'Unity Catalog', 'Python', 'Spark SQL'],
+                github: 'https://github.com/VandanaBhumireddygari/Open-Table-Formats-with-Databricks-and-Delta-Lake'
+            },
+            4: {
+                icon: '🧠',
+                title: 'NLP - Emotion Detection',
+                subtitle: 'Machine Learning | Natural Language Processing',
+                overview: 'Developed a machine learning model that accurately detects and classifies emotions from text data using advanced NLP techniques, transformers, and deep learning. This model can process customer feedback, reviews, and social media data for sentiment analysis.',
+                challenge: 'Challenge: Build a robust emotion detection system that can handle multiple emotion categories, varying text lengths, informal language, and context-dependent expressions while maintaining high accuracy.',
+                solution: 'Solution:\n• Implemented transformer-based models (BERT) for better contextual understanding\n• Built multilabel classification system for multiple emotions per text\n• Created data preprocessing pipeline with tokenization and normalization\n• Trained model on diverse emotion datasets\n• Deployed with proper model versioning and monitoring',
+                results: 'Results:\n• Achieved 92% accuracy on emotion classification\n• Enabled processing of 1M+ customer feedback records\n• Reduced manual sentiment analysis effort by 85%\n• Improved customer insights and feedback categorization\n• Created reusable model for other NLP tasks',
+                tech: ['Python', 'NLP', 'BERT', 'TensorFlow', 'Scikit-learn', 'Jupyter', 'Pandas'],
+                github: 'https://github.com/VandanaBhumireddygari/NLP---Emotion-Detection'
+            },
+            5: {
+                icon: '📈',
+                title: 'Marketing Mix Modeling',
+                subtitle: 'Statistical Analysis | Predictive Modeling',
+                overview: 'Performed statistical analysis of advertising impact using advanced predictive modeling techniques. This project analyzes the relationship between marketing spend across different channels and actual sales outcomes to optimize marketing budget allocation.',
+                challenge: 'Challenge: Determine the contribution of each marketing channel to sales while accounting for seasonality, external factors, and multicollinearity between variables.',
+                solution: 'Solution:\n• Built regression models to quantify channel contribution\n• Implemented time series analysis for trend and seasonality\n• Applied statistical techniques to handle multicollinearity\n• Created Bayesian optimization for budget allocation\n• Developed interactive dashboards for stakeholder communication',
+                results: 'Results:\n• Identified optimal marketing budget allocation\n• Increased ROI by 28% through channel rebalancing\n• Provided clear attribution for marketing spend\n• Enabled data-driven marketing strategy\n• Reduced wasted marketing spend by 35%',
+                tech: ['Python', 'R', 'Statistics', 'Modeling', 'Analytics', 'Visualization', 'Jupyter'],
+                github: 'https://github.com/VandanaBhumireddygari/Marketing-Mix-Modelling-Ads'
+            },
+            6: {
+                icon: '⚡',
+                title: 'Streamlit Apps',
+                subtitle: 'Interactive Dashboards | Data Visualization',
+                overview: 'Created interactive data applications and dashboards using Streamlit for real-time analytics and visualization. These apps enable users to explore data, run analyses, and make data-driven decisions without coding.',
+                challenge: 'Challenge: Build user-friendly interfaces that make complex data accessible to non-technical stakeholders while maintaining performance and enabling real-time data updates.',
+                solution: 'Solution:\n• Designed intuitive Streamlit interfaces with drag-and-drop simplicity\n• Integrated real-time data connectors to databases and APIs\n• Built interactive visualizations with Plotly and Matplotlib\n• Implemented caching for performance optimization\n• Created reusable components for rapid development',
+                results: 'Results:\n• Enabled 100+ users to self-serve analytics\n• Reduced time to insight by 80%\n• Improved data accessibility for business teams\n• Decreased reliance on data team for routine reports\n• Increased adoption of data-driven decision making',
+                tech: ['Streamlit', 'Python', 'Plotly', 'Pandas', 'SQL', 'APIs', 'Docker'],
+                github: 'https://github.com/VandanaBhumireddygari/Streamlit'
             }
         };
 
         function openProject(projectId) {
-            const project = projects[projectId];
+            const project = projectsData[projectId];
             const modal = document.getElementById('projectModal');
-            const header = document.getElementById('modalHeader');
-            
-            // Update header color based on project
-            header.className = 'modal-header';
-            if (projectId === 2) header.classList.add('project-2');
-            if (projectId === 3) header.classList.add('project-3');
-            header.innerHTML = '<button class="close-btn" onclick="closeProject()">✕</button>' + project.emoji;
-            
-            // Update content
-            document.getElementById('projectTitle').textContent = project.title;
-            document.getElementById('projectSubtitle').textContent = project.subtitle;
-            document.getElementById('projectOverview').textContent = project.overview;
-            document.getElementById('projectAccomplishments').textContent = project.accomplishments;
-            document.getElementById('projectTechnical').textContent = project.technical;
-            document.getElementById('projectImpact').textContent = project.impact;
-            
-            // Update tags
-            const tagsContainer = document.getElementById('projectTags');
-            tagsContainer.innerHTML = project.tags.map(tag => `<div class="tag">${tag}</div>`).join('');
-            
+
+            // Set header
+            const headerHTML = `
+                <div class="modal-icon">${project.icon}</div>
+                <div class="modal-title">
+                    <h2>${project.title}</h2>
+                    <p>${project.subtitle}</p>
+                </div>
+            `;
+            document.getElementById('modalHeader').innerHTML = headerHTML;
+
+            // Set overview
+            document.getElementById('modalOverview').innerHTML = `
+                <h3>📝 Overview</h3>
+                <p>${project.overview}</p>
+            `;
+
+            // Set challenge
+            document.getElementById('modalChallenge').innerHTML = `
+                <h3>🎯 ${project.challenge.split(':')[0]}</h3>
+                <p>${project.challenge.split(':')[1]}</p>
+            `;
+
+            // Set solution
+            const solutionText = project.solution.split('Solution:')[1];
+            document.getElementById('modalSolution').innerHTML = `
+                <h3>💡 Solution</h3>
+                <ul>${solutionText.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('')}</ul>
+            `;
+
+            // Set results
+            const resultsText = project.results.split('Results:')[1];
+            document.getElementById('modalResults').innerHTML = `
+                <h3>✨ Results & Impact</h3>
+                <ul>${resultsText.split('\n').filter(line => line.trim()).map(line => `<li>${line.trim()}</li>`).join('')}</ul>
+            `;
+
+            // Set tech stack
+            const techHTML = `
+                <h3>🛠️ Technologies & Tools</h3>
+                <div class="modal-tags">
+                    ${project.tech.map(t => `<span class="modal-tag">${t}</span>`).join('')}
+                </div>
+            `;
+            document.getElementById('modalTech').innerHTML = techHTML;
+
+            // Set GitHub link
+            document.getElementById('modalGitHub').innerHTML = `
+                <a href="${project.github}" target="_blank">View on GitHub →</a>
+            `;
+
             modal.classList.add('active');
         }
 
-        function closeProject(event) {
-            const modal = document.getElementById('projectModal');
+        function closeProjectModal(event) {
             if (event && event.target.id !== 'projectModal') return;
-            modal.classList.remove('active');
+            document.getElementById('projectModal').classList.remove('active');
         }
 
-        // Close on escape key
+        // Close on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 document.getElementById('projectModal').classList.remove('active');
             }
         });
+
+        // Interactive Model Logic
+        let chart = null;
+
+        function updateModel() {
+            const records = parseFloat(document.getElementById('recordsInput').value) || 50;
+            const power = parseFloat(document.getElementById('powerInput').value) || 70;
+            const storage = parseFloat(document.getElementById('storageInput').value) || 60;
+
+            // Update slider displays
+            document.getElementById('powerValue').textContent = power + '%';
+            document.getElementById('storageValue').textContent = storage + '%';
+
+            // Calculate metrics
+            const baseTime = 18; // hours
+            const processingTime = (baseTime * (100 - power)) / 100 + 0.5;
+            const costSaved = Math.round(records * 24 * storage / 10);
+            const efficiency = Math.round(((power + storage) / 2) * 1.2);
+
+            // Update result boxes
+            document.getElementById('processingTime').textContent = processingTime.toFixed(1) + ' hrs';
+            document.getElementById('costSaved').textContent ='$' + costSaved.toLocaleString() + '/mo';
+            document.getElementById('efficiency').textContent = Math.min(efficiency, 99) + '%';
+
+            // Update chart
+            updateChart(records, power, storage, processingTime);
+        }
+
+        function updateChart(records, power, storage, time) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Processing Power', 'Storage Optimization', 'Headroom'],
+                    datasets: [{
+                        data: [power, storage, 100 - Math.max(power, storage)],
+                        backgroundColor: [
+                            '#667eea',
+                            '#f5576c',
+                            'rgba(102, 126, 234, 0.1)'
+                        ],
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#a0aec0',
+                                font: { size: 12 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Event listeners for model inputs
+        document.getElementById('recordsInput').addEventListener('change', updateModel);
+        document.getElementById('powerInput').addEventListener('input', updateModel);
+        document.getElementById('storageInput').addEventListener('input', updateModel);
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Thanks ${name}! I'll get back to you soon at ${document.getElementById('email').value}`);
+            this.reset();
+        });
+
+        // Initialize chart on load
+        window.addEventListener('load', updateModel);
     </script>
 </body>
 </html>
