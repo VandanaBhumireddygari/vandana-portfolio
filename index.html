@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,78 +6,557 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
-        header { padding: 40px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .hero-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
-        .intro-text { font-size: 1.2rem; color: #555; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; }
-        .skills { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .skill-tag { background: white; padding: 10px 20px; border-radius: 25px; font-size: 0.95rem; border: 1px solid #e0e0e0; transition: all 0.3s ease; }
-        .skill-tag:hover { background: #f0f0f0; border-color: #999; }
-        .portfolio-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
-        .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .portfolio-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
-        .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
-        .card-image { width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
-        .card-image.project-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .card-image.project-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .card-content { padding: 20px; }
-        .card-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .card-content p { color: #666; font-size: 0.95rem; }
-        .about-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; margin-bottom: 60px; }
-        .about-content { max-width: 700px; margin: 0 auto; text-align: center; }
-        .about-content p { font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
-        .cta-button { display: inline-block; background: #333; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; margin: 20px 10px; font-size: 1rem; transition: all 0.3s ease; border: 2px solid #333; cursor: pointer; }
-        .cta-button.secondary { background: white; color: #333; border-color: #333; }
-        .cta-button:hover { background: white; color: #333; }
-        .cta-button.secondary:hover { background: #333; color: white; }
-        .social-links { display: flex; gap: 20px; justify-content: center; margin-top: 30px; }
-        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: white; border: 2px solid #e0e0e0; border-radius: 50%; font-size: 1.2rem; transition: all 0.3s ease; text-decoration: none; color: #333; }
-        .social-links a:hover { background: #333; color: white; border-color: #333; }
-        footer { padding: 40px 20px; text-align: center; color: #888; border-top: 1px solid #e0e0e0; margin-top: 60px; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; overflow-y: auto; animation: fadeIn 0.3s ease; }
-        .modal.active { display: flex; align-items: center; justify-content: center; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .modal-content { background: white; border-radius: 16px; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s ease; position: relative; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #f0f0f0;
+            border-color: #999;
+        }
+
+        .portfolio-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card-image.project-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-image.project-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .about-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 60px;
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 20px 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #333;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #333;
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: #333;
+            border-color: #333;
+        }
+
+        .cta-button.secondary:hover {
+            background: #333;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .social-links a:hover {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 60px;
+        }
+
+        /* Project Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .modal-header.project-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .modal-header.project-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 50px 40px;
+        }
+
+        .modal-body h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-body .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .detail-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .detail-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .intro-text {
+                font-size: 1rem;
+            }
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+            .modal-body {
+                padding: 30px 20px;
+            }
+            .modal-body h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
-<header>
-    <h1>Hello, I'm Vandana! 👋</h1>
-</header>
-<div class="hero-section">
-    <p class="intro-text">I'm a <strong>Data Engineer / Analytics Engineer</strong> passionate about building modern data systems, pipelines, and analytics products.</p>
-    <div class="skills">
-        <div class="skill-tag">❄️ Snowflake</div>
-        <div class="skill-tag">📊 DBT</div>
-        <div class="skill-tag">🔥 Databricks</div>
-        <div class="skill-tag">☁️ AWS</div>
-    </div>
-    <div>
-        <a href="#portfolio" class="cta-button">View My Work</a>
-        <a href="#contact" class="cta-button secondary">Get in Touch</a>
-    </div>
-</div>
-<div class="portfolio-section" id="portfolio">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-card" onclick="openProject(1)">
-            <div class="card-image">📈</div>
-            <div class="card-content"><h3>MMM Optimization</h3><p>Built MMM with adstock, hill curves, lag models & optimization.</p></div>
+    <header>
+        <h1>Hello, I'm [Your Name]! 👋</h1>
+    </header>
+
+    <div class="hero-section">
+        <p class="intro-text">
+            I'm a <strong>Designer</strong> with 3+ years of experience creating beautiful, user-centric digital experiences. 
+            Passionate about solving problems through design and building products that make a real impact.
+        </p>
+
+        <div class="skills">
+            <div class="skill-tag">🎨 UI/UX Design</div>
+            <div class="skill-tag">✨ Motion Design</div>
+            <div class="skill-tag">💡 Product Design</div>
+            <div class="skill-tag">🔧 Design Systems</div>
         </div>
-        <div class="portfolio-card" onclick="openProject(2)">
-            <div class="card-image project-2">❄️</div>
-            <div class="card-content"><h3>Snowflake + DBT Modern Stack</h3><p>Built Bronze→Silver→Gold with 78% pipeline improvement.</p></div>
-        </div>
-        <div class="portfolio-card" onclick="openProject(3)">
-            <div class="card-image project-3">🤖</div>
-            <div class="card-content"><h3>LLM Analytics Agent</h3><p>Streamlit + LangChain insights automation.</p></div>
+
+        <div>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+            <a href="#contact" class="cta-button secondary">Get in Touch</a>
         </div>
     </div>
-</div>
-<footer><p>© 2025 Vandana. All rights reserved.</p></footer>
+
+    <div class="portfolio-section" id="portfolio">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card" onclick="openProject(1)">
+                <div class="card-image">📱</div>
+                <div class="card-content">
+                    <h3>Project One</h3>
+                    <p>A mobile app redesign focused on improving user engagement and retention for a fintech platform.</p>
+                </div>
+            </div>
+            <div class="portfolio-card" onclick="openProject(2)">
+                <div class="card-image project-2">🛍️</div>
+                <div class="card-content">
+                    <h3>Project Two</h3>
+                    <p>E-commerce platform redesign that increased conversion rates by streamlining the checkout process.</p>
+                </div>
+            </div>
+            <div class="portfolio-card" onclick="openProject(3)">
+                <div class="card-image project-3">📚</div>
+                <div class="card-content">
+                    <h3>Project Three</h3>
+                    <p>Learning management system design for an ed-tech startup focusing on accessibility and usability.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section" id="contact">
+        <div class="about-content">
+            <h2 class="section-title">Let's Create Something Amazing</h2>
+            <p>
+                I'm always excited to collaborate on meaningful projects and help bring ideas to life. 
+                Whether it's a new product, a redesign, or just a chat about design—feel free to reach out!
+            </p>
+            <div class="social-links">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Email">✉️</a>
+            </div>
+            <a href="mailto:your.email@example.com" class="cta-button" style="margin-top: 30px;">Send me an email</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 [Your Name]. All rights reserved. Built with care.</p>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal" onclick="closeProject(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header" id="modalHeader">
+                <button class="close-btn" onclick="closeProject()">✕</button>
+            </div>
+            <div class="modal-body">
+                <h2 id="projectTitle"></h2>
+                <p class="subtitle" id="projectSubtitle"></p>
+                
+                <div class="project-details">
+                    <div class="detail-section">
+                        <h3>Challenge</h3>
+                        <p id="projectChallenge"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>Solution</h3>
+                        <p id="projectSolution"></p>
+                    </div>
+                </div>
+
+                <div class="project-details">
+                    <div class="detail-section">
+                        <h3>Results</h3>
+                        <p id="projectResults"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>My Role</h3>
+                        <p id="projectRole"></p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Skills & Tools</h3>
+                    <div class="tags" id="projectTags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projects = {
+            1: {
+                title: "Fintech Mobile App Redesign",
+                subtitle: "Mobile UX | Financial Services",
+                emoji: "📱",
+                challenge: "The original app had a confusing navigation structure and users were abandoning their transactions at the checkout stage. Our research showed that 40% of users couldn't find key features without help.",
+                solution: "We restructured the information architecture, simplified the transaction flow, and introduced progressive disclosure to reduce cognitive load. The new design uses clear visual hierarchy and micro-interactions to guide users.",
+                results: "Increased user engagement by 35%, reduced cart abandonment by 20%, and improved app ratings from 3.2 to 4.6 stars.",
+                role: "Lead UX Designer | Conducted user research, created wireframes, designed UI, and led user testing sessions.",
+                tags: ["Figma", "User Research", "Prototyping", "Mobile Design", "Analytics"]
+            },
+            2: {
+                title: "E-Commerce Platform Redesign",
+                subtitle: "Web UX | E-Commerce",
+                emoji: "🛍️",
+                challenge: "The checkout process had 5+ steps with unnecessary form fields, causing a 60% cart abandonment rate. Users struggled to find products and compare prices.",
+                solution: "We streamlined checkout to 3 steps, implemented one-click purchasing, added smart product recommendations, and created an intuitive filtering system for better product discovery.",
+                results: "Increased conversion rate by 45%, reduced checkout time by 50%, and improved average order value by 28%.",
+                role: "Senior Product Designer | Led design sprints, created design system, and coordinated with development team.",
+                tags: ["Figma", "Design Systems", "A/B Testing", "User Testing", "Interaction Design"]
+            },
+            3: {
+                title: "EdTech Learning Platform",
+                subtitle: "Web & Mobile UX | Education Technology",
+                emoji: "📚",
+                challenge: "Students found the platform overwhelming with cluttered dashboards. Teachers needed better tools to track student progress. Accessibility was a major concern.",
+                solution: "Designed an intuitive dashboard with personalized learning paths, created teacher analytics tools, and ensured WCAG 2.1 AA compliance throughout the platform.",
+                results: "Student engagement increased by 55%, teacher satisfaction score improved to 4.7/5, and platform became fully accessible to users with disabilities.",
+                role: "Product Designer | Accessibility specialist, conducted workshops with educators, iterated based on feedback.",
+                tags: ["Figma", "Accessibility", "Dashboard Design", "Data Visualization", "User Testing"]
+            }
+        };
+
+        function openProject(projectId) {
+            const project = projects[projectId];
+            const modal = document.getElementById('projectModal');
+            const header = document.getElementById('modalHeader');
+            
+            // Update header color based on project
+            header.className = 'modal-header';
+            if (projectId === 2) header.classList.add('project-2');
+            if (projectId === 3) header.classList.add('project-3');
+            header.textContent = project.emoji;
+            
+            // Update content
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectSubtitle').textContent = project.subtitle;
+            document.getElementById('projectChallenge').textContent = project.challenge;
+            document.getElementById('projectSolution').textContent = project.solution;
+            document.getElementById('projectResults').textContent = project.results;
+            document.getElementById('projectRole').textContent = project.role;
+            
+            // Update tags
+            const tagsContainer = document.getElementById('projectTags');
+            tagsContainer.innerHTML = project.tags.map(tag => `<div class="tag">${tag}</div>`).join('');
+            
+            modal.classList.add('active');
+        }
+
+        function closeProject(event) {
+            if (event && event.target.id !== 'projectModal') return;
+            document.getElementById('projectModal').classList.remove('active');
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProject();
+        });
+    </script>
 </body>
 </html>
