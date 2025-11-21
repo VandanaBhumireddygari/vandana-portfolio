@@ -1,95 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vandana | Data Engineer Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { margin:0; font-family:'Poppins', sans-serif; color:#111; background:#fafafa; }
-    nav { display:flex; justify-content:space-between; padding:20px 60px; position:fixed; width:100%; top:0; background:#fafafa; box-shadow:0 2px 4px rgba(0,0,0,0.05); z-index:10; }
-    nav a { margin-left:20px; text-decoration:none; color:#111; font-weight:500; }
-    .hero { padding:180px 60px 120px; max-width:1200px; margin:auto; }
-    .hero h1 { font-size:3.3rem; font-weight:700; margin:0; }
-    .hero p { font-size:1.3rem; margin:20px 0 30px; max-width:700px; }
-    .cta-buttons a { padding:14px 26px; background:#111; color:#fff; border-radius:6px; text-decoration:none; margin-right:14px; font-weight:600; }
-    .section { padding:100px 60px; max-width:1200px; margin:auto; }
-    .section h2 { font-size:2.4rem; margin-bottom:20px; }
-    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-top:40px; }
-    .card { background:#fff; border-radius:14px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
-    .card h3 { margin-top:0; font-size:1.4rem; }
-    .card p { font-size:0.95rem; }
-    .card a { color:#111; text-decoration:underline; font-weight:600; }
-    footer { padding:60px; text-align:center; font-size:0.9rem; background:#f0f0f0; margin-top:80px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #fafafa; color: #333; line-height: 1.6; }
+        header { padding: 40px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .hero-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 3rem; margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
+        .intro-text { font-size: 1.2rem; color: #555; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .skills { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .skill-tag { background: white; padding: 10px 20px; border-radius: 25px; font-size: 0.95rem; border: 1px solid #e0e0e0; transition: all 0.3s ease; }
+        .skill-tag:hover { background: #f0f0f0; border-color: #999; }
+        .portfolio-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .portfolio-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .card-image { width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .card-image.project-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .card-image.project-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .card-content { padding: 20px; }
+        .card-content h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .card-content p { color: #666; font-size: 0.95rem; }
+        .about-section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; background: white; border-radius: 12px; margin-bottom: 60px; }
+        .about-content { max-width: 700px; margin: 0 auto; text-align: center; }
+        .about-content p { font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.8; }
+        .cta-button { display: inline-block; background: #333; color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; margin: 20px 10px; font-size: 1rem; transition: all 0.3s ease; border: 2px solid #333; cursor: pointer; }
+        .cta-button.secondary { background: white; color: #333; border-color: #333; }
+        .cta-button:hover { background: white; color: #333; }
+        .cta-button.secondary:hover { background: #333; color: white; }
+        .social-links { display: flex; gap: 20px; justify-content: center; margin-top: 30px; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; background: white; border: 2px solid #e0e0e0; border-radius: 50%; font-size: 1.2rem; transition: all 0.3s ease; text-decoration: none; color: #333; }
+        .social-links a:hover { background: #333; color: white; border-color: #333; }
+        footer { padding: 40px 20px; text-align: center; color: #888; border-top: 1px solid #e0e0e0; margin-top: 60px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; overflow-y: auto; animation: fadeIn 0.3s ease; }
+        .modal.active { display: flex; align-items: center; justify-content: center; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content { background: white; border-radius: 16px; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s ease; position: relative; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1); }
+    </style>
 </head>
 <body>
-
-<nav>
-  <div class="logo" style="font-weight:700; font-size:1.2rem;">Vandana</div>
-  <div>
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1>Hello, I'm Vandana</h1>
-  <p>Data Engineer & Analytics Engineer with experience in Snowflake, DBT, Databricks, AWS, Azure, and building end‑to‑end pipelines that power analytics, growth, and decision-making.</p>
-  <div class="cta-buttons">
-    <a href="#work">View My Work</a>
-    <a href="#resume">Download Resume</a>
-  </div>
-</section>
-
-<section class="section" id="work">
-  <h2>Selected Work</h2>
-  <p>Here are a few of my highlighted engineering & analytics projects.</p>
-
-  <div class="projects">
-    <div class="card">
-      <h3>Snowflake + DBT Modern Data Stack</h3>
-      <p>Designed and built a medallion architecture (Bronze → Silver → Gold) using DBT, Snowflake, and Databricks that reduced ETL runtime by 78%.</p>
-      
-      <a href="project1.html">View Case Study →</a>
+<header>
+    <h1>Hello, I'm Vandana! 👋</h1>
+</header>
+<div class="hero-section">
+    <p class="intro-text">I'm a <strong>Data Engineer / Analytics Engineer</strong> passionate about building modern data systems, pipelines, and analytics products.</p>
+    <div class="skills">
+        <div class="skill-tag">❄️ Snowflake</div>
+        <div class="skill-tag">📊 DBT</div>
+        <div class="skill-tag">🔥 Databricks</div>
+        <div class="skill-tag">☁️ AWS</div>
     </div>
-
-    <div class="card">
-      <h3>Marketing Mix Modeling (MMM)</h3>
-      <p>Developed Adstock, Hill saturation, lag models and optimization for viewership forecasting across 5 seasons and 50+ weeks of media spend data.</p>
-      
-      <a href="project2.html">View Project →</a>
+    <div>
+        <a href="#portfolio" class="cta-button">View My Work</a>
+        <a href="#contact" class="cta-button secondary">Get in Touch</a>
     </div>
-
-    <div class="card">
-      <h3>Streamlit + LLM Analytics App</h3>
-      <p>Built an LLM‑powered analytics assistant using LangChain and Gemini API to automate insights extraction and data summarization.</p>
-      
-      
-      
-      <a href="project3.html">View App →</a>
-
+</div>
+<div class="portfolio-section" id="portfolio">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-card" onclick="openProject(1)">
+            <div class="card-image">📈</div>
+            <div class="card-content"><h3>MMM Optimization</h3><p>Built MMM with adstock, hill curves, lag models & optimization.</p></div>
+        </div>
+        <div class="portfolio-card" onclick="openProject(2)">
+            <div class="card-image project-2">❄️</div>
+            <div class="card-content"><h3>Snowflake + DBT Modern Stack</h3><p>Built Bronze→Silver→Gold with 78% pipeline improvement.</p></div>
+        </div>
+        <div class="portfolio-card" onclick="openProject(3)">
+            <div class="card-image project-3">🤖</div>
+            <div class="card-content"><h3>LLM Analytics Agent</h3><p>Streamlit + LangChain insights automation.</p></div>
+        </div>
     </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <h2>About Me</h2>
-  <p>I am a Data Engineer currently at CHS Inc. and a Master's graduate in Data Science & AI from the University of Texas at Dallas. I specialize in building scalable pipelines, analytics systems, and machine‑learning‑ready datasets that help teams make better, faster decisions.</p>
-</section>
-
-<section class="section" id="contact">
-  <h2>Let's Connect</h2>
-  <p>Email: <strong>your.email@example.com</strong></p>
-  <p>LinkedIn • GitHub • Resume</p>
-</section>
-
-<footer>
-  © 2025 Vandana. Built with love and clean data.
-</footer>
-
+</div>
+<footer><p>© 2025 Vandana. All rights reserved.</p></footer>
 </body>
 </html>
