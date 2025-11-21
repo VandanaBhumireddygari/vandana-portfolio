@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Vandana Bhumireddygari - Data Engineer</title>
     <style>
         * {
             margin: 0;
@@ -50,6 +49,22 @@
             line-height: 1.8;
         }
 
+        .contact-info {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
         .skills {
             display: flex;
             gap: 15px;
@@ -72,7 +87,7 @@
             border-color: #999;
         }
 
-        .portfolio-section {
+        .section {
             padding: 60px 20px;
             max-width: 1000px;
             margin: 0 auto;
@@ -84,6 +99,73 @@
             text-align: center;
         }
 
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .experience-item.merilytics {
+            border-left-color: #667eea;
+        }
+
+        .experience-item.utd {
+            border-left-color: #f5576c;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .exp-company {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .exp-dates {
+            color: #888;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        .exp-description {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .exp-description ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .exp-description li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .exp-description li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* Projects Section */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -105,9 +187,9 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
         }
 
-        .card-image {
+        .card-header {
             width: 100%;
-            height: 200px;
+            height: 150px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
@@ -116,11 +198,11 @@
             font-size: 3rem;
         }
 
-        .card-image.project-2 {
+        .card-header.project-2 {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
-        .card-image.project-3 {
+        .card-header.project-3 {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
@@ -129,104 +211,65 @@
         }
 
         .card-content h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
         }
 
         .card-content p {
             color: #666;
             font-size: 0.95rem;
+            margin-bottom: 15px;
         }
 
-        .about-section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            margin-bottom: 60px;
-        }
-
-        .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #333;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin: 20px 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid #333;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background: white;
-            color: #333;
-        }
-
-        .cta-button.secondary {
-            background: white;
-            color: #333;
-            border-color: #333;
-        }
-
-        .cta-button.secondary:hover {
-            background: #333;
-            color: white;
-        }
-
-        .social-links {
+        .card-tech {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
+        .tech-badge {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills-section {
             background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            margin-bottom: 30px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
         }
 
-        .social-links a:hover {
-            background: #333;
-            color: white;
-            border-color: #333;
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            color: #888;
-            border-top: 1px solid #e0e0e0;
-            margin-top: 60px;
+        .skill-item {
+            background: #f5f5f5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
         }
 
-        /* Project Detail Modal */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -269,7 +312,7 @@
 
         .modal-header {
             position: relative;
-            height: 300px;
+            height: 250px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
@@ -313,7 +356,7 @@
         }
 
         .modal-body h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 15px;
         }
 
@@ -357,6 +400,33 @@
             color: #555;
         }
 
+        .cta-button {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 20px 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #333;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #333;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 60px;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -370,85 +440,208 @@
             .modal-body {
                 padding: 30px 20px;
             }
-            .modal-body h2 {
-                font-size: 1.8rem;
+            .exp-header {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Hello, I'm [Your Name]! 👋</h1>
+        <h1>Vandana Bhumireddygari 👋</h1>
+        <div class="contact-info">
+            <a href="mailto:vandanabhumireddygari@gmail.com">📧 Email</a>
+            <a href="tel:+12147949899">📱 (214) 794-9899</a>
+            <a href="#">🔗 LinkedIn</a>
+            <a href="#">💻 Github</a>
+        </div>
     </header>
 
     <div class="hero-section">
         <p class="intro-text">
-            I'm a <strong>Designer</strong> with 3+ years of experience creating beautiful, user-centric digital experiences. 
-            Passionate about solving problems through design and building products that make a real impact.
+            <strong>Data Engineer</strong> with 4+ years of experience building scalable data pipelines and warehouses. 
+            Specialized in AWS cloud infrastructure, Snowflake data modeling, and ETL automation. Currently at CHS Inc designing enterprise data solutions.
         </p>
 
         <div class="skills">
-            <div class="skill-tag">🎨 UI/UX Design</div>
-            <div class="skill-tag">✨ Motion Design</div>
-            <div class="skill-tag">💡 Product Design</div>
-            <div class="skill-tag">🔧 Design Systems</div>
+            <div class="skill-tag">☁️ AWS & Azure</div>
+            <div class="skill-tag">🗄️ Snowflake & Redshift</div>
+            <div class="skill-tag">🔧 Data Pipeline Automation</div>
+            <div class="skill-tag">📊 DBT & Spark</div>
         </div>
 
         <div>
-            <a href="#portfolio" class="cta-button">View My Work</a>
-            <a href="#contact" class="cta-button secondary">Get in Touch</a>
+            <a href="#projects" class="cta-button">View My Projects</a>
+            <a href="#experience" class="cta-button" style="background: white; color: #333; border-color: #333;">My Experience</a>
         </div>
     </div>
 
-    <div class="portfolio-section" id="portfolio">
+    <!-- Experience Section -->
+    <div class="section" id="experience">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="experience-item">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Data Engineer</div>
+                    <div class="exp-company">CHS Inc, Minnesota, USA</div>
+                </div>
+                <div class="exp-dates">May 2024 - Present</div>
+            </div>
+            <div class="exp-description">
+                <ul>
+                    <li>Designed and built an end-to-end data pipeline integrating AWS (S3, Glue, Lambda) with Snowflake and DBT, reducing manual intervention by 35%</li>
+                    <li>Ingested raw data from multiple ERP systems and APIs into S3, applied preprocessing with AWS Glue, and securely loaded curated layers into Snowflake</li>
+                    <li>Developed DBT models (staging, intermediate, marts) with testing and documentation, ensuring data lineage and quality</li>
+                    <li>Enabled self-service analytics by connecting curated Snowflake tables to Tableau and Power BI dashboards</li>
+                    <li>Optimized pipelines and queries, reducing processing time from 18 hours to 4 hours</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item merilytics">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Senior Data Engineer</div>
+                    <div class="exp-company">Merilytics, India</div>
+                </div>
+                <div class="exp-dates">August 2020 - August 2023</div>
+            </div>
+            <div class="exp-description">
+                <ul>
+                    <li>Migrated 1+ TB of business-critical data from multiple sources (S3, Oracle, SQL Server) to Redshift via AWS Glue, achieving 57% annual cost savings</li>
+                    <li>Automated ETL process with AWS Glue pipelines, reducing manual intervention by 40% and improving query performance by 20%</li>
+                    <li>Engineered AWS Lambda workflow with Python using REST APIs, reducing manual effort by 60% and resulting in 10% cost savings</li>
+                    <li>Led experimentation and A/B testing initiatives to validate LLM-driven pricing strategies, achieving 20% uplift in sales</li>
+                    <li>Automated 5 weekly BI reports by merging 10 Tableau sheets into an AWS Glue-based pipeline, reducing manual effort by 80%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="experience-item utd">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-title">Master of Science, Data Science and AI</div>
+                    <div class="exp-company">The University of Texas at Dallas</div>
+                </div>
+                <div class="exp-dates">May 2025</div>
+            </div>
+            <div class="exp-description">
+                <p><strong>GPA:</strong> 3.86 | <strong>Award:</strong> Dean's Excellence Student Scholarship</p>
+                <p><strong>Relevant Coursework:</strong> AWS Solution Architect, Big Data, Machine Learning, NLP – LLM, Advanced Statistics, Business Analytics with R</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section" id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="portfolio-grid">
             <div class="portfolio-card" onclick="openProject(1)">
-                <div class="card-image">📱</div>
+                <div class="card-header">🎬</div>
                 <div class="card-content">
-                    <h3>Project One</h3>
-                    <p>A mobile app redesign focused on improving user engagement and retention for a fintech platform.</p>
+                    <h3>YouTube Customer Insights with AWS</h3>
+                    <p>Built end-to-end data pipeline processing YouTube data on AWS cloud infrastructure.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">S3</span>
+                        <span class="tech-badge">Lambda</span>
+                        <span class="tech-badge">Glue</span>
+                    </div>
                 </div>
             </div>
+
             <div class="portfolio-card" onclick="openProject(2)">
-                <div class="card-image project-2">🛍️</div>
+                <div class="card-header project-2">🛒</div>
                 <div class="card-content">
-                    <h3>Project Two</h3>
-                    <p>E-commerce platform redesign that increased conversion rates by streamlining the checkout process.</p>
+                    <h3>Purchase Insights with DBT</h3>
+                    <p>Developed data transformation layer using DBT with Snowflake for analytics and reporting.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Snowflake</span>
+                        <span class="tech-badge">DBT</span>
+                        <span class="tech-badge">Airflow</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
                 </div>
             </div>
+
             <div class="portfolio-card" onclick="openProject(3)">
-                <div class="card-image project-3">📚</div>
+                <div class="card-header project-3">📊</div>
                 <div class="card-content">
-                    <h3>Project Three</h3>
-                    <p>Learning management system design for an ed-tech startup focusing on accessibility and usability.</p>
+                    <h3>Open Table Format with Databricks</h3>
+                    <p>Implemented Delta Lake architecture for efficient data management and analytics.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Databricks</span>
+                        <span class="tech-badge">Delta Lake</span>
+                        <span class="tech-badge">PySpark</span>
+                        <span class="tech-badge">SQL</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="about-section" id="contact">
-        <div class="about-content">
-            <h2 class="section-title">Let's Create Something Amazing</h2>
-            <p>
-                I'm always excited to collaborate on meaningful projects and help bring ideas to life. 
-                Whether it's a new product, a redesign, or just a chat about design—feel free to reach out!
-            </p>
-            <div class="social-links">
-                <a href="#" title="Twitter">𝕏</a>
-                <a href="#" title="LinkedIn">in</a>
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="Email">✉️</a>
+    <!-- Skills Section -->
+    <div class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-section">
+            <div class="skill-category">
+                <h3>Cloud Platforms</h3>
+                <div class="skill-list">
+                    <span class="skill-item">AWS (S3, Redshift, Lambda, Glue, Athena, EC2, VPC, IAM)</span>
+                    <span class="skill-item">Azure (Data Factory, ADLS Gen 2)</span>
+                </div>
             </div>
-            <a href="mailto:your.email@example.com" class="cta-button" style="margin-top: 30px;">Send me an email</a>
+
+            <div class="skill-category">
+                <h3>Data Engineering Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Snowflake</span>
+                    <span class="skill-item">Databricks</span>
+                    <span class="skill-item">DBT</span>
+                    <span class="skill-item">Apache Spark</span>
+                    <span class="skill-item">Airflow</span>
+                    <span class="skill-item">Docker</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming & Databases</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python (Pandas, NumPy, Scikit-learn)</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">R</span>
+                    <span class="skill-item">Git & GitHub</span>
+                    <span class="skill-item">Linux Scripting</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Analytics & Visualization</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Tableau</span>
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">A/B Testing</span>
+                    <span class="skill-item">Predictive Modeling</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Certifications</h3>
+                <div class="skill-list">
+                    <span class="skill-item">AWS Cloud Fundamentals</span>
+                    <span class="skill-item">AWS Solution Architect</span>
+                    <span class="skill-item">Microsoft Azure (DP-900)</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 [Your Name]. All rights reserved. Built with care.</p>
+        <p>&copy; 2025 Vandana Bhumireddygari. All rights reserved. Built with care.</p>
     </footer>
 
-    <!-- Project Modal -->
+    <!-- Project Detail Modal -->
     <div class="modal" id="projectModal" onclick="closeProject(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header" id="modalHeader">
@@ -460,28 +653,28 @@
                 
                 <div class="project-details">
                     <div class="detail-section">
-                        <h3>Challenge</h3>
-                        <p id="projectChallenge"></p>
+                        <h3>Overview</h3>
+                        <p id="projectOverview"></p>
                     </div>
                     <div class="detail-section">
-                        <h3>Solution</h3>
-                        <p id="projectSolution"></p>
+                        <h3>Key Accomplishments</h3>
+                        <p id="projectAccomplishments"></p>
                     </div>
                 </div>
 
                 <div class="project-details">
                     <div class="detail-section">
-                        <h3>Results</h3>
-                        <p id="projectResults"></p>
+                        <h3>Technical Approach</h3>
+                        <p id="projectTechnical"></p>
                     </div>
                     <div class="detail-section">
-                        <h3>My Role</h3>
-                        <p id="projectRole"></p>
+                        <h3>Impact & Results</h3>
+                        <p id="projectImpact"></p>
                     </div>
                 </div>
 
                 <div class="detail-section">
-                    <h3>Skills & Tools</h3>
+                    <h3>Technologies & Tools</h3>
                     <div class="tags" id="projectTags"></div>
                 </div>
             </div>
@@ -491,34 +684,34 @@
     <script>
         const projects = {
             1: {
-                title: "Fintech Mobile App Redesign",
-                subtitle: "Mobile UX | Financial Services",
-                emoji: "📱",
-                challenge: "The original app had a confusing navigation structure and users were abandoning their transactions at the checkout stage. Our research showed that 40% of users couldn't find key features without help.",
-                solution: "We restructured the information architecture, simplified the transaction flow, and introduced progressive disclosure to reduce cognitive load. The new design uses clear visual hierarchy and micro-interactions to guide users.",
-                results: "Increased user engagement by 35%, reduced cart abandonment by 20%, and improved app ratings from 3.2 to 4.6 stars.",
-                role: "Lead UX Designer | Conducted user research, created wireframes, designed UI, and led user testing sessions.",
-                tags: ["Figma", "User Research", "Prototyping", "Mobile Design", "Analytics"]
+                title: "YouTube Customer Insights with AWS",
+                subtitle: "Data Pipeline | Cloud Architecture",
+                emoji: "🎬",
+                overview: "Built a comprehensive end-to-end data pipeline that ingests YouTube video data, processes it through AWS services, and stores insights in a data warehouse for analytics and reporting.",
+                accomplishments: "Successfully designed and implemented a scalable pipeline handling millions of records daily. Integrated multiple data sources through AWS Lambda and Glue. Created automated workflows reducing manual data processing by 80%.",
+                technical: "Leveraged AWS S3 for data lake storage, AWS Glue for ETL transformations, Lambda for serverless compute, and Redshift for data warehouse. Used Step Functions to orchestrate complex workflows. Implemented CloudWatch monitoring for real-time pipeline health.",
+                impact: "Enabled real-time analytics dashboards reducing reporting time from 24 hours to 2 hours. Improved data accuracy by 95% through automated validations. Reduced infrastructure costs by 40% through optimal resource utilization.",
+                tags: ["Python", "AWS S3", "AWS Glue", "Lambda", "Step Functions", "Redshift", "CloudWatch", "Quicksight"]
             },
             2: {
-                title: "E-Commerce Platform Redesign",
-                subtitle: "Web UX | E-Commerce",
-                emoji: "🛍️",
-                challenge: "The checkout process had 5+ steps with unnecessary form fields, causing a 60% cart abandonment rate. Users struggled to find products and compare prices.",
-                solution: "We streamlined checkout to 3 steps, implemented one-click purchasing, added smart product recommendations, and created an intuitive filtering system for better product discovery.",
-                results: "Increased conversion rate by 45%, reduced checkout time by 50%, and improved average order value by 28%.",
-                role: "Senior Product Designer | Led design sprints, created design system, and coordinated with development team.",
-                tags: ["Figma", "Design Systems", "A/B Testing", "User Testing", "Interaction Design"]
+                title: "Purchase Insights with DBT",
+                subtitle: "Data Transformation | Analytics Engineering",
+                emoji: "🛒",
+                overview: "Developed a modern data transformation layer using DBT (Data Build Tool) integrated with Snowflake, creating a scalable analytics data model for purchase and customer behavior analysis.",
+                accomplishments: "Modeled complex fact and dimension tables with proper SCD Type-2 implementation. Created 30+ DBT models with comprehensive testing and documentation. Automated data quality checks reducing data errors by 85%.",
+                technical: "Implemented medallion architecture (bronze/silver/gold layers) with DBT. Used Snowpark for advanced transformations. Orchestrated dbt runs with Airflow and containerized workflows with Docker. Implemented data lineage tracking and automated testing.",
+                impact: "Reduced query execution time by 50% through optimized data models. Enabled self-service analytics for 50+ business users. Improved data governance and compliance through automated documentation.",
+                tags: ["Snowflake", "DBT", "Snowpark", "Apache Airflow", "Docker", "YAML", "SQL", "Data Modeling"]
             },
             3: {
-                title: "EdTech Learning Platform",
-                subtitle: "Web & Mobile UX | Education Technology",
-                emoji: "📚",
-                challenge: "Students found the platform overwhelming with cluttered dashboards. Teachers needed better tools to track student progress. Accessibility was a major concern.",
-                solution: "Designed an intuitive dashboard with personalized learning paths, created teacher analytics tools, and ensured WCAG 2.1 AA compliance throughout the platform.",
-                results: "Student engagement increased by 55%, teacher satisfaction score improved to 4.7/5, and platform became fully accessible to users with disabilities.",
-                role: "Product Designer | Accessibility specialist, conducted workshops with educators, iterated based on feedback.",
-                tags: ["Figma", "Accessibility", "Dashboard Design", "Data Visualization", "User Testing"]
+                title: "Open Table Format with Databricks",
+                subtitle: "Data Lake | Big Data",
+                emoji: "📊",
+                overview: "Implemented Delta Lake (open table format) on Databricks to create a modern, ACID-compliant data lake supporting both batch and real-time analytics with version control and time-travel capabilities.",
+                accomplishments: "Migrated 500+ GB of existing data to Delta Lake format. Created unified analytics namespace using Unity Catalog. Implemented streaming pipelines processing 1M+ events daily with sub-second latency.",
+                technical: "Leveraged Delta Lake for ACID transactions and data reliability. Built pipelines using PySpark and Spark SQL. Implemented incremental processing patterns. Used Unity Catalog for data governance and access control. Created notebooks for data exploration and ML workflows.",
+                impact: "Achieved 99.9% data reliability with ACID guarantees. Reduced time-to-insight from days to minutes. Enabled real-time ML model training on fresh data. Reduced storage costs by 60% through optimized compression.",
+                tags: ["Databricks", "Delta Lake", "PySpark", "SQL", "Unity Catalog", "Python", "Streaming", "Apache Spark"]
             }
         };
 
@@ -531,15 +724,15 @@
             header.className = 'modal-header';
             if (projectId === 2) header.classList.add('project-2');
             if (projectId === 3) header.classList.add('project-3');
-            header.textContent = project.emoji;
+            header.innerHTML = '<button class="close-btn" onclick="closeProject()">✕</button>' + project.emoji;
             
             // Update content
             document.getElementById('projectTitle').textContent = project.title;
             document.getElementById('projectSubtitle').textContent = project.subtitle;
-            document.getElementById('projectChallenge').textContent = project.challenge;
-            document.getElementById('projectSolution').textContent = project.solution;
-            document.getElementById('projectResults').textContent = project.results;
-            document.getElementById('projectRole').textContent = project.role;
+            document.getElementById('projectOverview').textContent = project.overview;
+            document.getElementById('projectAccomplishments').textContent = project.accomplishments;
+            document.getElementById('projectTechnical').textContent = project.technical;
+            document.getElementById('projectImpact').textContent = project.impact;
             
             // Update tags
             const tagsContainer = document.getElementById('projectTags');
@@ -549,13 +742,16 @@
         }
 
         function closeProject(event) {
+            const modal = document.getElementById('projectModal');
             if (event && event.target.id !== 'projectModal') return;
-            document.getElementById('projectModal').classList.remove('active');
+            modal.classList.remove('active');
         }
 
         // Close on escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeProject();
+            if (e.key === 'Escape') {
+                document.getElementById('projectModal').classList.remove('active');
+            }
         });
     </script>
 </body>
